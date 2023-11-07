@@ -1,0 +1,155 @@
+:root {
+  --radial-bg: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  --linear-bg: linear-gradient(
+    181deg,
+    rgba(0, 0, 0, 0.2) 0.91%,
+    rgba(255, 255, 255, 0) 116.71%,
+    rgba(255, 255, 255, 0) 116.72%
+  );
+}
+
+@mixin background-props {
+  background-color: #555;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+@mixin background($color) {
+  background: linear-gradient(
+      47.06deg,
+      $color -3.87%,
+      rgba(255, 255, 255, 0) 20.98%
+    ),
+    #ffffff;
+}
+
+.slide {
+  min-height: 100vh;
+  overflow: hidden;
+  padding-bottom: 80px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  color: #fff;
+
+  &--norway {
+    background: var(--linear-bg), var(--radial-bg), url("./../img/01.webp");
+    @include background-props;
+  }
+  &--austria {
+    background: var(--linear-bg), var(--radial-bg), url("./../img/02.webp");
+    @include background-props;
+  }
+  &--uae {
+    background: var(--linear-bg), var(--radial-bg), url("./../img/03.webp");
+    @include background-props;
+  }
+  &--thailand {
+    background: var(--linear-bg), var(--radial-bg), url("./../img/04.webp");
+    @include background-props;
+  }
+  &--morocco {
+    background: var(--linear-bg), var(--radial-bg), url("./../img/05.webp");
+    @include background-props;
+  }
+
+  &::before {
+    content: "";
+  }
+
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
+
+  @media (max-width: 1200px) {
+    padding-bottom: 60px;
+  }
+  @media (max-width: 767px) {
+    padding-top: 100px;
+    padding-bottom: 40px;
+  }
+  @media (min-width: 844px) and (max-height: 500px) {
+    padding-bottom: 40px;
+  }
+
+  &__header {
+    text-align: center;
+    position: relative;
+  }
+
+  &__title {
+    font-size: 13vw;
+    font-weight: 700;
+    line-height: 1.22;
+    display: inline-block;
+    padding: 0 10px;
+
+    @include background(#000);
+    background-clip: text;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+
+    &--norway {
+      @include background(#051d27);
+    }
+
+    &--austria {
+      @include background(#122127);
+    }
+
+    &--uae {
+      @include background(#aa6621);
+    }
+
+    &--thailand {
+      @include background(#2e7c88);
+    }
+
+    &--morocco {
+      @include background(#757575);
+    }
+
+    @media (max-width: 767px) {
+      font-size: 19vw;
+    }
+  }
+  &__tagline {
+    position: absolute;
+    width: 100%;
+    top: -8px;
+    font-weight: 500;
+    font-size: 1.56vw;
+    line-height: 1.23;
+    letter-spacing: 0.55em;
+    color: rgba(255, 255, 255, 0.7);
+
+    @media (max-width: 767px) {
+      font-size: 3vw;
+    }
+  }
+
+  &__locations {
+    display: flex;
+    column-gap: 30px;
+    width: 70%;
+    margin: 0 auto;
+
+    @media (max-width: 1023px) {
+      width: 90%;
+    }
+
+    @media (max-width: 767px) {
+      width: 80%;
+      flex-direction: column;
+      row-gap: 20px;
+    }
+  }
+}
